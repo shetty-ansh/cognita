@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Socket.IO Chat Test</title>
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f7f7f7; padding: 20px; }
+    #chat { border: 1px solid #ccc; background: #fff; padding: 10px; height: 300px; overflow-y: auto; }
+    #chat p { margin: 5px 0; }
+    input, button { padding: 8px; margin: 5px; }
+  </style>
+</head>
+<body>
+  <h2>Socket.IO Chat Test</h2>
+
+  <label>Access Token:</label><br>
+  <input type="text" id="token" size="80"><br>
+
+  <label>Room ID:</label><br>
+  <input type="text" id="roomId" size="40"><br>
+  <button onclick="joinRoom()">Join Room</button>
+
+  <div id="chat"></div>
+
+  <input type="text" id="messageBox" placeholder="Type a message">
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    let socket;
+
+    function joinRoom() {
+      const token = document.getElementById("token").value;
+      const roomId = document.getElementById("roomId").value;
+
+      socket = io("http://localhost:3000", { auth: { token } });
+
+      socket.on("connect", () => {
+        log(`✅ Connected as ${socket.id}`);
+        socket.emit("joinRoom", roomId);
+        log(`Joined room: ${roomId}`);
+      });
+
+      socket.on("newMessage", (msg) => {
+        log(`📩 ${msg.sender.name}: ${msg.content}`);
+      });
+
+      socket.on("disconnect", () => {
+        log("❌ Disconnected");
+      });
+    }
+
+    function sendMessage() {
+      const content = document.getElementById("messageBox").value;
+      const roomId = document.getElementById("roomId").value;
+      socket.emit("sendMessage", { roomId, content });
+    //   log(`You: ${content}`);
+      document.getElementById("messageBox").value = "";
+    }
+
+    function log(text) {
+      const chat = document.getElementById("chat");
+      const p = document.createElement("p");
+      p.textContent = text;
+      chat.appendChild(p);
+      chat.scrollTop = chat.scrollHeight;
+    }
+  </script>
+</body>
+</html>
