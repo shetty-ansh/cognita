@@ -10,6 +10,7 @@ import { Server } from "socket.io";
 import jwt from "jsonwebtoken";
 import { Chatroom } from "./src/models/chatroom-model.js";
 import { Message } from "./src/models/messages-model.js";
+import tutorRouter from "./src/routes/tutorRouter.js";
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.get("/", (req, res) => res.send("Helloooo"));
 app.use("/users", userRouter);
 app.use("/auth", googleRouter);
 app.use("/chatrooms", chatroomRouter);
+app.use("/tutor", tutorRouter)
 
 const startServer = async () => {
   try {

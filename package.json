@@ -11,16 +11,21 @@
     "dev": "nodemon index.js"
   },
   "dependencies": {
+    "@google/genai": "^1.21.0",
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "google-auth-library": "^10.3.0",
     "jsonwebtoken": "^9.0.2",
+    "mime": "^4.1.0",
     "mongoose": "^8.18.1",
     "socket.io": "^4.8.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "@types/node": "^24.6.1",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   }
 }
