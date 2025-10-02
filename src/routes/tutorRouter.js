@@ -1,9 +1,10 @@
 import { Router } from "express";
 import { tutorMain } from "../controllers/tutor-controller.js";
+import verifyJWT from "../middlewares/auth.js";
 
 const tutorRouter = Router();
 
-tutorRouter.post("/", async (req, res) => {
+tutorRouter.post("/", verifyJWT, async (req, res) => {
   try {
     const { prompt } = req.body;
     if (!prompt) {

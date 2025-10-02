@@ -66,3 +66,19 @@ export const createNotes = asyncHandler(async (req, res) => {
     throw new apiError(500, "Problem while creating note");
   }
 });
+
+export const getUserNotes = asyncHandler(async (req, res) => {
+  const userId = req.user._id;
+
+  const notes = await Notes.find({ createdBy: userId }).sort({ createdAt: -1 });
+
+  if (!notes || notes.length === 0) {
+    return res.status(404).json({ message: "No notes found for this user." });
+  }
+
+  res.status(200).json({
+    success: true,
+    count: notes.length,
+    notes,
+  });
+});
