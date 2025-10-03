@@ -5,7 +5,33 @@ import { apiError } from '../utils/apiError.js';
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
-async function getGeminiResponse(prompt) {
+export async function getGeminiResponseText(prompt) {
+  try {
+    const geminiResponse = await ai.models.generateContent({
+      model: "gemini-2.0-flash",
+      contents: [
+        {
+          role: "user",
+          parts: [
+            {
+              text: `Answer the prompt and explain everything simply. You should sound like a tutor explaining something. Give a response accordingly. No other extra information. "${prompt}"`
+            }
+          ]
+        }
+      ]
+    });
+    if (geminiResponse.text === undefined) {
+      throw new apiError(500, "No text in Gemini response");
+    }
+    return geminiResponse.text;
+  } catch (error) {
+    console.error('Error getting Gemini response:', error);
+    throw new Error('Failed to get response from Gemini');
+  }
+}
+
+
+async function getGeminiResponseScript(prompt) {
   try {
     const geminiResponse = await ai.models.generateContent({
       model: "gemini-2.0-flash",
@@ -165,7 +191,7 @@ function createWavHeader(dataLength, options) {
 }
 
 export async function tutorMain(inputPrompt) {
-  const geminiScript = await getGeminiResponse(inputPrompt);
+  const geminiScript = await getGeminiResponseScript(inputPrompt);
   const geminiAudioFiles = await tts(geminiScript);
   if (!geminiAudioFiles || geminiAudioFiles.length === 0) {
     throw new apiError(500, "No Audio :(");

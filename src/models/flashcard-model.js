@@ -1,18 +1,20 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const FlashcardSchema = new mongoose.Schema({
-  question: String,
-  answer: String,
-  topic: String,
-  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
+const flashcardSchema = new mongoose.Schema({
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    question: String,
+    answer: String,
 });
 
 const QuizSchema = new mongoose.Schema({
-  title: String,
-  questions: [{
-    question: String,
-    options: [String],
-    correctAnswer: String
-  }],
-  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
-}, { timestamps: true });
+    title: String,
+    questions: [{
+      question: String,
+      options: [String],
+      correctAnswer: String
+    }],
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
+  }, { timestamps: true });
+  
+
+export default mongoose.model('Flashcard', flashcardSchema);
