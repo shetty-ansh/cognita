@@ -15,3 +15,8 @@ const verifyJWT = (req, res, next) => {
 };
 
 export default verifyJWT
+
+
+// // Unit tEST
+// iNTEGRATION TEST
+// END TO END TEST

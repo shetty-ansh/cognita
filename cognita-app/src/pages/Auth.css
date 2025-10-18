@@ -1,0 +1,302 @@
+/* Auth page styles - Cannabis Lab theme */
+
+.auth-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff7ed 0%, #fafaf9 40%, #fed7aa 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative blobs */
+.auth-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.3;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.auth-blob-1 {
+  top: 80px;
+  left: 80px;
+  width: 256px;
+  height: 256px;
+  background: #fdba74;
+}
+
+.auth-blob-2 {
+  bottom: 80px;
+  right: 80px;
+  width: 320px;
+  height: 320px;
+  background: #d6d3d1;
+  animation-delay: 2s;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.05); opacity: 0.4; }
+}
+
+/* Card wrapper */
+.auth-wrapper {
+  width: 100%;
+  max-width: 28rem;
+  position: relative;
+}
+
+/* Glass card */
+.auth-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Header */
+.auth-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 2rem; 
+}
+
+.auth-brand {
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #44403c;
+  margin: 0;
+}
+
+.auth-toggle {
+  font-size: 0.875rem;
+  color: #57534e;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.auth-toggle:hover {
+  color: #1c1917;
+}
+
+/* Title */
+.auth-title {
+  font-size: 2.25rem;
+  font-weight: 300;
+  color: #1c1917;
+  margin: 0 0 2rem 0;
+}
+
+/* Social login button */
+.social-btn {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(231, 229, 228, 0.5);
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.social-btn:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  background: #292524;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+.social-text {
+  font-size: 0.875rem;
+  color: #44403c;
+}
+
+/* Input groups */
+.input-group {
+  position: relative;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: #a8a29e;
+  pointer-events: none;
+}
+
+.auth-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(231, 229, 228, 0.5);
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem 0.75rem 0rem;
+  color: #44403c;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s;
+
+}
+
+.auth-input::placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: transparent;
+  padding-left: 40px;
+}
+
+.auth-input:focus {
+  border-color: rgba(251, 146, 60, 0.5);
+  box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.1);
+}
+
+.forgot-btn {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #78716c;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.forgot-btn:hover {
+  color: #292524;
+}
+
+/* Terms text */
+.auth-text {
+  font-size: 1rem;
+  color: #78716c;
+  line-height: 1.6;
+  margin: 0.5rem 0 1rem 0;
+}
+
+/* Submit button */
+.submit-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 1rem;
+  /* background-color: pink; */
+}
+
+.submit-btn {
+  width: 88px;
+  height: 48px;
+  background: #1c1917;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s;
+}
+
+.submit-btn:hover {
+  background: #292524;
+  transform: scale(1.05);
+}
+
+.submit-btn:active {
+  transform: scale(0.95);
+}
+
+.submit-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Footer text */
+.auth-footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #57534e;
+  margin-top: 1.5rem;
+}
+
+/* Bottom promo card */
+.promo-card {
+  margin-top: 1.5rem;
+  background: #1c1917;
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.promo-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.promo-title {
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: white;
+  margin: 0 0 0.25rem 0;
+}
+
+.promo-subtitle {
+  font-size: 0.875rem;
+  color: #a8a29e;
+  margin: 0;
+}
+
+.promo-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.promo-btn:hover {
+  color: #fdba74;
+}
